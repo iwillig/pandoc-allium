@@ -30,3 +30,7 @@ lint-js:
 # Chat with unsloth/Qwen3.6-27B-MLX-8bit via mlx_vlm's chat CLI.
 chat-qwen:
     pipenv run python -m mlx_vlm.chat --model unsloth/Qwen3.6-27B-MLX-8bit
+
+# Serve unsloth/Qwen3.6-27B-MLX-8bit at http://localhost:8080/v1 (OpenAI-compatible) for pi agent. Leave running in its own terminal.
+serve-qwen:
+    pipenv run python -m mlx_vlm.server --host 127.0.0.1 --port 8080 --model unsloth/Qwen3.6-27B-MLX-8bit

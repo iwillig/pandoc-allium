@@ -1,0 +1,5 @@
+{
+  "defaultProvider": "mlx-lm",
+  "defaultModel": "unsloth/Qwen3.6-27B-MLX-8bit",
+  "enabledModels": ["mlx-lm/unsloth/Qwen3.6-27B-MLX-8bit"]
+}
