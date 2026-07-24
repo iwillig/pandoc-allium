@@ -1,13 +1,20 @@
-# Run everything: Python + JS test suites.
+# Run absolutely everything: every linter and every test suite.
+check: lint test
+
+# Run everything: Python + JS test suites (JS includes the cucumber features).
 test: test-py test-js
 
 # Run the Python test suite (pytest via pipenv).
 test-py:
     pipenv run pytest
 
-# Run the JS test suite (yarn/node).
+# Run the JS test suite: unit tests, then the cucumber features.
 test-js:
     cd js && yarn test
+
+# Run the cucumber-js feature suite on its own (js/features).
+test-features:
+    cd js && yarn test:features
 
 # Run everything: Python + JS linters.
 lint: lint-py lint-js

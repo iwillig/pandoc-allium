@@ -41,6 +41,8 @@ toolchain (npm scripts, CI, a docs build) independent of pandoc.
   install allium-cli`) -- see <https://juxt.github.io/allium/installation>
 - Python 3.9+ and [pipenv](https://pipenv.pypa.io/), for the pandoc filter
 - Node 18+ and [yarn](https://yarnpkg.com/), only if you want the JS runner
+  ([nvm](https://github.com/nvm-sh/nvm) users: `cd js && nvm use` picks up
+  the pinned version from `js/.nvmrc`)
 
 ## Python filter (pipenv)
 
@@ -131,6 +133,21 @@ node js/bin/run-allium.js path/to/spec.allium
 Exit codes match `allium check` itself: `0` clean, `1` one or more
 diagnostics, `2` no input files or `allium` couldn't be run at all.
 
+### Feature tests (Cucumber)
+
+`yarn test` runs the unit suite (`test/`) and then a
+[cucumber-js](https://github.com/cucumber/cucumber-js) suite (`features/`)
+that drives the actual `bin/run-allium.js` CLI end-to-end -- writing real
+spec files to a temp dir and asserting on exit codes and stdout/stderr --
+to read as a plain-language description of what this system guarantees
+(a clean spec exits 0, an invalid one is reported as an error, a missing
+`allium` install fails with a helpful hint, etc). Run just that suite with:
+
+```sh
+cd js
+yarn test:features
+```
+
 ## Layout
 
 ```
@@ -142,6 +159,8 @@ pandoc_allium/
 js/
   src/run-allium.js   Node port of allium_cli.py
   bin/run-allium.js   standalone CLI
+  test/               unit tests for src/run-allium.js
+  features/           cucumber-js feature tests driving bin/run-allium.js end-to-end
 tests/            pytest suite (fixtures/ holds raw .allium snippets)
 examples/demo.md  a doc that exercises a clean spec, a broken one, and .no-check
 ```
