@@ -1,6 +1,23 @@
 # pandoc-allium
 
 [![CI](https://github.com/iwillig/pandoc-allium/actions/workflows/ci.yml/badge.svg)](https://github.com/iwillig/pandoc-allium/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/pandoc-allium.svg)](https://pypi.org/project/pandoc-allium/)
+
+## Install
+
+```sh
+pip install pandoc-allium
+```
+
+This registers the `pandoc-allium` console script on `PATH`. You'll also
+need the `allium` CLI itself and pandoc -- see [Requirements](#requirements)
+below. Then run pandoc with the filter:
+
+```sh
+pandoc -F pandoc-allium \
+  --syntax-definition "$(pandoc-allium --syntax-path)" \
+  -s examples/demo.md -o demo.html
+```
 
 A [pandoc](https://pandoc.org/) filter for the [Allium](https://juxt.github.io/allium/)
 specification language. For every fenced code block written as:
