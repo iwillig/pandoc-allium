@@ -6,12 +6,23 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  ALLIUM_VERSION: "3.5.0"
+
 jobs:
   python-tests:
     name: Python tests (pipenv)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install allium CLI
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          curl -sL "https://github.com/juxt/allium-tools/releases/download/v${ALLIUM_VERSION}/allium-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          "$HOME/.local/bin/allium" --version
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -35,6 +46,14 @@ jobs:
         working-directory: js
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install allium CLI
+        run: |
+          mkdir -p "$HOME/.local/bin"
+          curl -sL "https://github.com/juxt/allium-tools/releases/download/v${ALLIUM_VERSION}/allium-x86_64-unknown-linux-gnu.tar.gz" \
+            | tar -xz -C "$HOME/.local/bin"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          "$HOME/.local/bin/allium" --version
 
       - name: Set up Node
         uses: actions/setup-node@v4
