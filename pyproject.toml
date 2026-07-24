@@ -9,9 +9,26 @@ description = "Pandoc filter that runs `allium check` on fenced allium code bloc
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
+authors = [
+    { name = "Ivan Willig", email = "iwillig@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing :: Filters",
+    "Topic :: Documentation",
+]
 dependencies = [
     "panflute>=2.3.1",
 ]
+
+[project.urls]
+Homepage = "https://github.com/iwillig/pandoc-allium"
+Repository = "https://github.com/iwillig/pandoc-allium"
+Issues = "https://github.com/iwillig/pandoc-allium/issues"
 
 [project.scripts]
 pandoc-allium = "pandoc_allium.filter:main"
