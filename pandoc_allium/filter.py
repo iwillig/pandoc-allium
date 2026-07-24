@@ -9,7 +9,7 @@ For every fenced code block written as:
 
 this runs `allium check` against the block's contents and inserts a
 diagnostics report right after it. The code block itself is never
-rewritten -- pass `--syntax-definition pandoc_allium/syntax/allium.xml` to
+rewritten -- pass `--syntax-definition "$(pandoc-allium --syntax-path)"` to
 pandoc alongside this filter to also get native Skylighting syntax
 highlighting, in any output format.
 
@@ -19,6 +19,9 @@ in documentation.
 """
 
 from __future__ import annotations
+
+import sys
+from importlib import resources
 
 import panflute as pf
 
@@ -43,7 +46,15 @@ def action(elem: pf.Element, doc: pf.Doc):
     return None if diag is None else [elem, diag]
 
 
+def syntax_path() -> str:
+    """Return the installed, absolute path to the Kate syntax definition."""
+    return str(resources.files("pandoc_allium") / "syntax" / "allium.xml")
+
+
 def main(doc: pf.Doc = None) -> None:
+    if doc is None and sys.argv[1:] == ["--syntax-path"]:
+        print(syntax_path())
+        return
     pf.run_filter(action, doc=doc)
 
 

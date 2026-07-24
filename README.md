@@ -1,5 +1,7 @@
 # pandoc-allium
 
+[![CI](https://github.com/iwillig/pandoc-allium/actions/workflows/ci.yml/badge.svg)](https://github.com/iwillig/pandoc-allium/actions/workflows/ci.yml)
+
 A [pandoc](https://pandoc.org/) filter for the [Allium](https://juxt.github.io/allium/)
 specification language. For every fenced code block written as:
 
@@ -54,14 +56,17 @@ through `pipenv run` so that script is on `PATH` (your system's Homebrew
 
 ```sh
 pipenv run pandoc -F pandoc-allium \
-  --syntax-definition pandoc_allium/syntax/allium.xml \
+  --syntax-definition "$(pipenv run pandoc-allium --syntax-path)" \
   -s examples/demo.md -o demo.html
 ```
 
 `--syntax-definition` is optional but recommended: without it, `allium`
 code blocks still get checked, they just render as plain unhighlighted
 code. It works identically for HTML, LaTeX/PDF, docx, and every other
-Skylighting-backed writer pandoc has.
+Skylighting-backed writer pandoc has. `pandoc-allium --syntax-path` prints
+the syntax file's installed, absolute path, so this works the same way
+whether you installed via `pipenv`, `pip install pandoc-allium`, or an
+editable checkout.
 
 ### Opting out per block
 

@@ -18,3 +18,6 @@ pandoc-allium = "pandoc_allium.filter:main"
 
 [tool.setuptools.packages.find]
 include = ["pandoc_allium*"]
+
+[tool.setuptools.package-data]
+pandoc_allium = ["syntax/*.xml"]
