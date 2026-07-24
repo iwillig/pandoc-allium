@@ -40,9 +40,9 @@ toolchain (npm scripts, CI, a docs build) independent of pandoc.
 - the `allium` CLI itself: `brew install juxt/allium/allium` (or `cargo
   install allium-cli`) -- see <https://juxt.github.io/allium/installation>
 - Python 3.9+ and [pipenv](https://pipenv.pypa.io/), for the pandoc filter
-- Node 18+ and [yarn](https://yarnpkg.com/), only if you want the JS runner
-  ([nvm](https://github.com/nvm-sh/nvm) users: `cd js && nvm use` picks up
-  the pinned version from `js/.nvmrc`)
+- Node 22+ (cucumber-js requires it) and [yarn](https://yarnpkg.com/), only
+  if you want the JS runner ([nvm](https://github.com/nvm-sh/nvm) users:
+  `cd js && nvm use` picks up the pinned version from `js/.nvmrc`)
 
 ## Python filter (pipenv)
 
