@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# Pipenv
+.venv/
+
+# JS
+js/node_modules/
+js/dist/
+js/yarn-error.log
+
+# Editor / OS
+.DS_Store

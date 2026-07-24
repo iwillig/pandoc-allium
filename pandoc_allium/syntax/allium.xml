@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE language SYSTEM "language.dtd">
+<!--
+  Kate/KDE syntax-highlighting definition for the Allium specification
+  language (https://juxt.github.io/allium/), consumed by pandoc's built-in
+  Skylighting engine via:
+
+      pandoc --syntax-definition pandoc_allium/syntax/allium.xml ...
+
+  This makes ```allium fenced code blocks highlight natively in every
+  output format Skylighting supports (HTML, LaTeX/PDF, docx, ...), with no
+  client-side JavaScript required.
+-->
+<language name="Allium" version="1" kateversion="5.0" section="Sources"
+          extensions="*.allium" priority="5" author="pandoc-allium"
+          license="MIT">
+  <highlighting>
+    <list name="keywords">
+      <item>entity</item>
+      <item>rule</item>
+      <item>config</item>
+      <item>when</item>
+      <item>requires</item>
+      <item>ensures</item>
+      <item>let</item>
+      <item>for</item>
+      <item>in</item>
+      <item>if</item>
+      <item>exists</item>
+      <item>not</item>
+      <item>use</item>
+      <item>as</item>
+      <item>default</item>
+      <item>with</item>
+      <item>where</item>
+    </list>
+    <list name="constants">
+      <item>true</item>
+      <item>false</item>
+      <item>null</item>
+      <item>now</item>
+    </list>
+    <contexts>
+      <context name="Normal" attribute="Normal Text" lineEndContext="#stay">
+        <Detect2Chars attribute="Comment" context="Comment" char="-" char1="-"/>
+        <DetectChar attribute="String" context="String" char="&quot;"/>
+        <keyword attribute="Keyword" context="#stay" String="keywords"/>
+        <keyword attribute="Constant" context="#stay" String="constants"/>
+        <Float attribute="Float" context="#stay"/>
+        <Int attribute="DecVal" context="#stay"/>
+        <RegExpr attribute="DataType" context="#stay" String="\b[A-Z]\w*\b"/>
+        <RegExpr attribute="Operator" context="#stay" String="&gt;=|&lt;=|==|!=|-&gt;|=&gt;|\||[=+*/?]"/>
+        <DetectChar attribute="Symbol" context="#stay" char="{"/>
+        <DetectChar attribute="Symbol" context="#stay" char="}"/>
+        <DetectChar attribute="Symbol" context="#stay" char="("/>
+        <DetectChar attribute="Symbol" context="#stay" char=")"/>
+        <DetectChar attribute="Symbol" context="#stay" char="["/>
+        <DetectChar attribute="Symbol" context="#stay" char="]"/>
+        <DetectChar attribute="Symbol" context="#stay" char=":"/>
+        <DetectChar attribute="Symbol" context="#stay" char=","/>
+        <DetectChar attribute="Symbol" context="#stay" char="."/>
+      </context>
+      <context name="Comment" attribute="Comment" lineEndContext="#pop">
+      </context>
+      <context name="String" attribute="String" lineEndContext="#pop">
+        <RegExpr attribute="String" context="#stay" String="\\."/>
+        <DetectChar attribute="String" context="#pop" char="&quot;"/>
+      </context>
+    </contexts>
+    <itemDatas>
+      <itemData name="Normal Text" defStyleNum="dsNormal" spellChecking="false"/>
+      <itemData name="Keyword" defStyleNum="dsKeyword" spellChecking="false"/>
+      <itemData name="Constant" defStyleNum="dsConstant" spellChecking="false"/>
+      <itemData name="Comment" defStyleNum="dsComment"/>
+      <itemData name="String" defStyleNum="dsString" spellChecking="false"/>
+      <itemData name="DataType" defStyleNum="dsDataType" spellChecking="false"/>
+      <itemData name="DecVal" defStyleNum="dsDecVal" spellChecking="false"/>
+      <itemData name="Float" defStyleNum="dsFloat" spellChecking="false"/>
+      <itemData name="Operator" defStyleNum="dsOperator" spellChecking="false"/>
+      <itemData name="Symbol" defStyleNum="dsNormal" spellChecking="false"/>
+    </itemDatas>
+  </highlighting>
+</language>

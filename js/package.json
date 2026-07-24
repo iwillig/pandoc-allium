@@ -1,0 +1,20 @@
+{
+  "name": "run-allium",
+  "version": "0.1.0",
+  "description": "Node.js wrapper for running `allium check` (https://juxt.github.io/allium/), plus a small standalone CLI",
+  "license": "MIT",
+  "main": "src/run-allium.js",
+  "bin": {
+    "run-allium": "bin/run-allium.js"
+  },
+  "files": [
+    "src",
+    "bin"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node test/run-allium.test.js"
+  }
+}

@@ -1,0 +1,12 @@
+-- allium: 1
+
+entity Widget {
+    id: Integer
+    status: idle | active
+}
+
+rule Activate {
+    when: w: Widget.status
+    requires: w.status = idle
+    ensures: w.status = active
+}
