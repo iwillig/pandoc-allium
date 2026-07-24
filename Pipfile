@@ -5,6 +5,7 @@ verify_ssl = true
 
 [packages]
 pandoc-allium = {editable = true, path = "."}
+mlx-vlm = "*"
 
 [dev-packages]
 pytest = "*"
