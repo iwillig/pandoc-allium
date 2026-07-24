@@ -15,6 +15,12 @@
     "node": ">=18"
   },
   "scripts": {
-    "test": "node test/run-allium.test.js"
+    "test": "node test/run-allium.test.js",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "globals": "^17.7.0"
   }
 }

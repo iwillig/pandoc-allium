@@ -5,10 +5,11 @@ verify_ssl = true
 
 [packages]
 pandoc-allium = {editable = true, path = "."}
-mlx-vlm = "*"
+mlx-vlm = {version = "*", markers = "sys_platform == 'darwin'"}
 
 [dev-packages]
 pytest = "*"
+ruff = "*"
 
 [requires]
 python_version = "3.14"
