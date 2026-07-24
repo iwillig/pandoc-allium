@@ -61,6 +61,46 @@ toolchain (npm scripts, CI, a docs build) independent of pandoc.
   if you want the JS runner ([nvm](https://github.com/nvm-sh/nvm) users:
   `cd js && nvm use` picks up the pinned version from `js/.nvmrc`)
 
+## Local LLM development (Apple Silicon only)
+
+The repo includes an optional local LLM setup for offline, AI-assisted
+coding via the [`pi`](https://github.com/nicholasgriffintaylor/pi) agent
+framework. It runs the
+[unsloth/Qwen3.6-27B-MLX-8bit](https://huggingface.co/unsloth/Qwen3.6-27B-MLX-8bit)
+model entirely on-device using Apple's
+[MLX](https://github.com/ml-explore/mlx) framework — no API keys or
+network access required.
+
+### How it works
+
+The `Pipfile` conditionally installs `mlx-vlm` on macOS (`sys_platform ==
+'darwin'`). This gives two `just` recipes:
+
+- **`just chat-qwen`** — starts an interactive chat session with the model
+  via `mlx_vlm.chat`. Good for quick questions.
+- **`just serve-qwen`** — starts an OpenAI-compatible HTTP server at
+  `http://localhost:8080/v1` via `mlx_vlm.server`. Leave this running in
+  its own terminal; the `pi` agent connects to it as its provider.
+
+The `.pi/settings.json` file tells `pi` to use the `mlx-lm` provider
+pointing at `unsloth/Qwen3.6-27B-MLX-8bit` as the default model.
+
+### System prompt
+
+`.pi/SYSTEM.md` replaces `pi`'s default system prompt with a project-
+specific brief. It covers:
+
+- **Tools** — which capabilities the agent has (`read`, `bash`, `edit`,
+  `write`) and how to use them.
+- **Working style** — conventions like "read before you write," "verify
+  with project commands," and "never alter the original fenced block."
+- **Project context** — a summary of the codebase layout, module
+  responsibilities, and repo-specific conventions.
+- **Commands** — the `just` recipes the agent should use for testing and
+  linting.
+
+Edit `.pi/SYSTEM.md` to change the agent's behavior for this project.
+
 ## Python filter (pipenv)
 
 ```sh
@@ -178,6 +218,9 @@ js/
   bin/run-allium.js   standalone CLI
   test/               unit tests for src/run-allium.js
   features/           cucumber-js feature tests driving bin/run-allium.js end-to-end
+.pi/
+  settings.json   pi agent config (default provider + model)
+  SYSTEM.md       project-specific system prompt for the pi agent
 tests/            pytest suite (fixtures/ holds raw .allium snippets)
-examples/demo.md  a doc that exercises a clean spec, a broken one, and .no-check
+examples/         demo.md, common-errors.md, workflow.md, multi-entity.md
 ```
