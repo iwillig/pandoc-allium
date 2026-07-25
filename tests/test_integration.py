@@ -10,12 +10,14 @@ from __future__ import annotations
 
 import shutil
 import subprocess
+from pathlib import Path
 
 import pytest
 
 HAS_ALLIUM = shutil.which("allium") is not None
 HAS_PANDOC = shutil.which("pandoc") is not None
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
 EXAMPLES_DIR = "examples"
 
 
@@ -30,7 +32,7 @@ def _run_pandoc(source: str) -> str:
         ],
         capture_output=True,
         text=True,
-        cwd="/Users/iwillig/development/pandoc-allium",
+        cwd=REPO_ROOT,
     )
     assert result.returncode == 0, f"pandoc failed: {result.stderr}"
     return result.stdout
