@@ -1,0 +1,11 @@
+# Build the example: run pandoc with the filter, syntax highlighting,
+# and diagnostics CSS, producing a styled HTML report.
+build:
+	pipenv run pandoc -F pandoc-allium \
+	  --syntax-definition "$(pipenv run pandoc-allium --syntax-path)" \
+	  --css "$(pipenv run pandoc-allium --css-path)" \
+	  -s index.md -o output.html
+
+# Open the generated HTML in the default browser.
+open: build
+	open output.html

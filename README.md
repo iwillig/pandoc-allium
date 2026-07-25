@@ -45,6 +45,8 @@ altered** -- the filter only ever adds a block after it, so re-extracting
 the code (or handing the doc to another tool) always gets byte-for-byte
 what you wrote.
 
+![Diagnostics output](images/example-allium-spec.png)
+
 Syntax highlighting is handled separately and natively by pandoc's own
 [Skylighting](https://hackage.haskell.org/package/skylighting) engine via a
 bundled Kate syntax definition -- no JavaScript required for that part. A
