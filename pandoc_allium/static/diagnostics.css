@@ -1,0 +1,151 @@
+/* ── allium diagnostics ─────────────────────────────────────────── */
+
+.allium-diagnostics {
+  margin: 0.75em 0 1.25em;
+  padding: 0;
+  border: none;
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+
+.allium-diagnostics .allium-header {
+  margin: 0 0 0.6em;
+  padding: 0.5em 0.85em;
+  border-radius: 6px 6px 0 0;
+  font-size: 0.92em;
+  line-height: 1.4;
+  border: 1px solid;
+  border-bottom: none;
+}
+
+.allium-diagnostics .allium-header strong {
+  font-weight: 700;
+}
+
+/* Severity colouring */
+.allium-diagnostics.allium-error .allium-header {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
+}
+.allium-diagnostics.allium-warning .allium-header {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+.allium-diagnostics.allium-info .allium-header {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1e40af;
+}
+
+/* ── Group labels ───────────────────────────────────────────────── */
+
+.allium-diagnostics .allium-group-label {
+  margin: 0.6em 0 0.3em;
+  padding: 0.2em 0.6em;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+}
+
+.allium-diagnostics.allium-error .allium-group-label {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+.allium-diagnostics.allium-warning .allium-group-label {
+  background: #fffbeb;
+  color: #b45309;
+}
+.allium-diagnostics.allium-info .allium-group-label {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+/* ── Diagnostic items ───────────────────────────────────────────── */
+
+.allium-diagnostics ul {
+  margin: 0.2em 0 0;
+  padding: 0 0 0.5em 0;
+  list-style: none;
+}
+
+.allium-diagnostics .allium-diagnostic-item {
+  display: block;
+  margin: 0.3em 0;
+  padding: 0.45em 0.7em;
+  border-radius: 5px;
+  border: 1px solid;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.allium-diagnostics.allium-error .allium-diagnostic-item {
+  background: #fffafa;
+  border-color: #fecaca;
+}
+.allium-diagnostics.allium-warning .allium-diagnostic-item {
+  background: #fffdf5;
+  border-color: #fde68a;
+}
+.allium-diagnostics.allium-info .allium-diagnostic-item {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+/* ── Location badge ─────────────────────────────────────────────── */
+
+.allium-diagnostics .allium-location {
+  display: inline-block;
+  margin-right: 0.35em;
+  padding: 0.05em 0.4em;
+  font-size: 0.82em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 500;
+  color: #64748b;
+  background: #f1f5f9;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* ── Error code badge ───────────────────────────────────────────── */
+
+.allium-diagnostics .allium-code {
+  display: inline-block;
+  margin-left: 0.35em;
+  padding: 0.05em 0.4em;
+  font-size: 0.82em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-weight: 500;
+  color: #64748b;
+  background: #f1f5f9;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* ── Tool error block ───────────────────────────────────────────── */
+
+.allium-diagnostics.allium-tool-error {
+  margin: 0.75em 0 1.25em;
+  padding: 0.7em 0.9em;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
+  background: #fef2f2;
+  color: #991b1b;
+  font-size: 0.92em;
+  line-height: 1.5;
+}
+
+.allium-diagnostics.allium-tool-error strong {
+  font-weight: 700;
+}
+
+.allium-diagnostics.allium-tool-error code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.9em;
+  background: #fee2e2;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}

@@ -9,6 +9,7 @@ This file exercises `pandoc-allium` end to end. Build it with:
 ```sh
 pipenv run pandoc -F pandoc-allium \
   --syntax-definition pandoc_allium/syntax/allium.xml \
+  --css "$(pipenv run pandoc-allium --css-path)" \
   -s examples/demo.md -o /tmp/demo.html
 ```
 

@@ -51,9 +51,17 @@ def syntax_path() -> str:
     return str(resources.files("pandoc_allium") / "syntax" / "allium.xml")
 
 
+def css_path() -> str:
+    """Return the installed, absolute path to the diagnostics CSS stylesheet."""
+    return str(resources.files("pandoc_allium") / "static" / "diagnostics.css")
+
+
 def main(doc: pf.Doc = None) -> None:
     if doc is None and sys.argv[1:] == ["--syntax-path"]:
         print(syntax_path())
+        return
+    if doc is None and sys.argv[1:] == ["--css-path"]:
+        print(css_path())
         return
     pf.run_filter(action, doc=doc)
 

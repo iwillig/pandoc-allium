@@ -116,7 +116,7 @@ class TestDemoExample:
         assert "allium check:" in self.output
 
     def test_broken_spec_has_error(self):
-        assert "[error]" in self.output
+        assert "Error" in self.output
 
     def test_no_check_block_is_skipped(self):
         nocheck_section = self.output[self.output.index("Opting out"):]
